@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarteleraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cartelera.dbo.Clasificacion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Clasificacion">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Clasificacion" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Clasificacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cartelera.dbo.Estados' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Estados">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cartelera.dbo.Genero' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Genero">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Genero" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Genero" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cartelera.dbo.Municipios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Municipios">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Letra" Type="char" MaxLength="10" />
+    <Property Name="Municipio" Type="nvarchar" MaxLength="50" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cartelera.dbo.Pelicula' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Pelicula">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Director" Type="nvarchar" MaxLength="50" />
+    <Property Name="Productor" Type="nvarchar" MaxLength="50" />
+    <Property Name="Clasificacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Duracion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Genero" Type="nvarchar" MaxLength="50" />
+    <Property Name="Municipio" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Peliculas">
+    <Key>
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Director" Type="nvarchar" MaxLength="50" />
+    <Property Name="Productor" Type="nvarchar" MaxLength="50" />
+    <Property Name="Clasificacion" Type="nvarchar" MaxLength="50" />
+    <Property Name="Duracion" Type="time" Precision="7" />
+    <Property Name="Genero" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="CarteleraModelStoreContainer">
+    <EntitySet Name="Peliculas" EntityType="Self.Peliculas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clasificacion" EntityType="Self.Clasificacion" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Clasificacion].[ID] AS [ID], 
+    [Clasificacion].[Clasificacion] AS [Clasificacion]
+    FROM [dbo].[Clasificacion] AS [Clasificacion]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Estados" EntityType="Self.Estados" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Estados].[ID] AS [ID], 
+    [Estados].[Code] AS [Code], 
+    [Estados].[Estado] AS [Estado]
+    FROM [dbo].[Estados] AS [Estados]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Genero" EntityType="Self.Genero" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Genero].[ID] AS [ID], 
+    [Genero].[Genero] AS [Genero]
+    FROM [dbo].[Genero] AS [Genero]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Municipios" EntityType="Self.Municipios" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Municipios].[ID] AS [ID], 
+    [Municipios].[Letra] AS [Letra], 
+    [Municipios].[Municipio] AS [Municipio], 
+    [Municipios].[Code] AS [Code]
+    FROM [dbo].[Municipios] AS [Municipios]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Pelicula" EntityType="Self.Pelicula" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Pelicula].[ID] AS [ID], 
+    [Pelicula].[Nombre] AS [Nombre], 
+    [Pelicula].[Director] AS [Director], 
+    [Pelicula].[Productor] AS [Productor], 
+    [Pelicula].[Clasificacion] AS [Clasificacion], 
+    [Pelicula].[Duracion] AS [Duracion], 
+    [Pelicula].[Genero] AS [Genero], 
+    [Pelicula].[Municipio] AS [Municipio]
+    FROM [dbo].[Pelicula] AS [Pelicula]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
